@@ -2,7 +2,13 @@ package dungeon;
 
 import java.util.*;
 
+/**
+ * The class <code>Dungeon</code> represents a dungeon game.
+ */
+
 public class Dungeon {
+
+	// Attributs
 	protected Room currentRoom = new Room();
 	protected final Scanner scanner = new Scanner(System.in);
 
