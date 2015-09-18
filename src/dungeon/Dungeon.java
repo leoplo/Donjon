@@ -1,6 +1,5 @@
 package dungeon;
 
-import java.security.InvalidParameterException;
 import java.util.*;
 
 import dungeon.room.Room;
@@ -27,7 +26,7 @@ public class Dungeon {
 		try {
 			Room nextRoom = this.currentRoom.goRoom(command);
 			this.currentRoom = nextRoom;
-		} catch (InvalidParameterException e) {
+		} catch (IllegalArgumentException e) {
 			System.out.println("You can't go this way");
 		}
 	}
