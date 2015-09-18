@@ -1,5 +1,6 @@
 package dungeon.room;
 
+import java.security.InvalidParameterException;
 import java.util.*;
 
 /**
@@ -8,13 +9,13 @@ import java.util.*;
 
 public class Room {
 
-	// Attributs
+	// Attributes
 	protected Map<String,Room> rooms;
 	protected boolean gameIsLost;
 	protected boolean gameIsWin;
 	
 	/**
-	 * the Constructer, by default both boolean are initialized to <code>false</code>.
+	 * the Constructor, by default both boolean are initialized to <code>false</code>.
 	 */
 	public Room () {
 		this.rooms = new HashMap<String,Room>();
@@ -23,7 +24,7 @@ public class Room {
 	}
 	
 	/**
-	 * This fonction adds a room with a specified direction to <code>this</code> room. <br/>
+	 * This method adds a room with a specified direction to <code>this</code> room. <br/>
 	 * If the direction has already been set, the new value replaces it.
 	 * @param direction the direction associated to the room
 	 * @param room the the room associated to the direction 
@@ -33,7 +34,7 @@ public class Room {
 	}
 	
 	/**
-	 * This fonction returns the room associated to the chosen direction
+	 * This method returns the room associated to the chosen direction
 	 * @param direction the chosen direction
 	 * @exception InvalidParameterException if the direction doesn't exist
 	 * @return the room associated to the chosen direction

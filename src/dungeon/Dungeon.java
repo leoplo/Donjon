@@ -1,6 +1,9 @@
 package dungeon;
 
+import java.security.InvalidParameterException;
 import java.util.*;
+
+import dungeon.room.Room;
 
 /**
  * The class <code>Dungeon</code> represents a dungeon game.
@@ -8,16 +11,16 @@ import java.util.*;
 
 public class Dungeon {
 
-	// Attributs
+	// Attributes
 	protected Room currentRoom = new Room();
 	protected final Scanner scanner = new Scanner(System.in);
 
-	public String getCurrentRoom() {
+	public Room getCurrentRoom() {
 		return currentRoom;
 	}
 
 	/**
-	 * Interprets the user's command and executs it
+	 * Interprets the user's command and executes it
 	 * @param command the user's command
 	 */
 	public void interpretCommand(String command) {
@@ -43,7 +46,7 @@ public class Dungeon {
 			String line = this.scanner.nextLine();
 			interpretCommand(line);
 		} while (!gameIsFinished());
-		if (gameIsWon()) {
+		if (this.currentRoom.isWinningRoom()) {
 			System.out.println("You win !");
 		} else {
 			System.out.println("You loose !");
