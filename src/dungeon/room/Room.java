@@ -8,14 +8,10 @@ import java.util.*;
 
 public class Room {
 
-	// Attributes
 	protected Map<String,Room> rooms;
 	protected boolean gameIsLost;
 	protected boolean gameIsWin;
 	
-	/**
-	 * the Constructor, by default both boolean are initialized to <code>false</code>.
-	 */
 	public Room () {
 		this.rooms = new HashMap<String,Room>();
 		this.gameIsLost = false;
@@ -26,12 +22,7 @@ public class Room {
 		this.rooms.put("east", null);
 	}
 
-	/**
-	 * This method adds a room with a specified direction to <code>this</code> room. <br/>
-	 * If the direction has already been set, the new value replaces it.
-	 * @param direction the direction associated to the room
-	 * @param room the the room associated to the direction 
-	 */
+
 	public void addRoom (String direction, Room room) {
 		this.rooms.put(direction, room);
 	}
@@ -48,18 +39,11 @@ public class Room {
 		return this.rooms.get(direction);
 	}
 	
-	/**
-	 * Check if the room is a winning room
-	 * @return <code>true</code> if the room is a winning room, <code>false</code> else.
-	 */
+
 	public boolean isWinningRoom () {
 		return this.gameIsWin;
 	}
 	
-	/**
-	 * Check if the room is a losing room
-	 * @return <code>true</code> if the room is a losing room, <code>false</code> else.
-	 */
 	public boolean isLosingRoom () {
 		return this.gameIsLost;
 	}

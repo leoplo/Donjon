@@ -5,12 +5,11 @@ import java.util.*;
 import dungeon.room.*;
 
 /**
- * The class <code>Dungeon</code> represents a dungeon game.
+ * The class <code>Dungeon</code> represents a dungeon game containing Rooms.
  */
 
 public class Dungeon {
 
-	// Attributes
 	protected Room currentRoom = new Room();
 	protected final Scanner scanner = new Scanner(System.in);
 
