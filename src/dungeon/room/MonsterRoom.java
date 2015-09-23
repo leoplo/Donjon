@@ -14,7 +14,7 @@ public class MonsterRoom extends Room {
 		player.isAttacked(this.attackPoints);
 	}
 	
-	public String getMessage(){
+	public String toString(){
 		return "You entered in a monster room, you've lost "+this.attackPoints+" helth points.";
 	}
 }

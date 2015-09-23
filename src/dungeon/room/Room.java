@@ -48,7 +48,7 @@ public class Room {
 		return this.gameIsLost;
 	}
 	
-	public String getMessage() {
+	public String toString() {
 		return "You entered in a room";
 	}
 }
