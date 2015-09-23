@@ -4,6 +4,7 @@ public class DungeonMain {
 	
 	public static void main(String[] args) {
 		/* nom player stdin scanner pour new Player() */
+		Player player = new Player("joueur");
 		Dungeon dungeon = new Dungeon(player);
 		dungeon.initializeLevel1();
 		if (dungeon.start()) {
