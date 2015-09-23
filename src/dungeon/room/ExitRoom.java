@@ -5,4 +5,8 @@ public class ExitRoom extends Room {
 		super();
 		this.gameIsWin = true;
 	}
+	
+	public String toString(){
+		return "You escape this dungeon !";
+	}
 }
