@@ -47,4 +47,8 @@ public class Room {
 	public boolean isLosingRoom () {
 		return this.gameIsLost;
 	}
+	
+	public String getMessage() {
+		return "You entered in a room";
+	}
 }

@@ -13,4 +13,8 @@ public class PotionRoom extends Room {
 	public void healPlayer(Player player){
 		player.isHeal(this.heal);
 	}
+
+	public String getMessage() {
+		return "You entered in a new room and you found a potion, you are heal by "+this.heal+" helth points";
+	}
 }

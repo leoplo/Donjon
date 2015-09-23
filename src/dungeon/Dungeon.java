@@ -58,18 +58,23 @@ public class Dungeon {
 	}
 	
 	public void initializeLevel1 () {
+		Room entryRoom = new Room();
 		Room room1 = new Room();
-		Room room2 = new TrapRoom();
-		Room room3 = new Room();
-		Room room4 = new ExitRoom();
+		Room room2 = new Room();
+		Room room4 = new Room();
+		Room room5 = new Room();
+		Room room6 = new Room();
+		Room room7 = new Room();
+		Room room8 = new Room();
+		Room room9 = new Room();
+		Room keyRoom = new KeyRoom();
+		Room exitRoom = new ExitRoom();
+		Room trapRoom = new TrapRoom();
+		
+		this.currentRoom = entryRoom;
 		this.currentRoom.addRoom("north", room1);
-		room1.addRoom("south", currentRoom);
-		room1.addRoom("west", room2);
-		room2.addRoom("east", room1);
-		room1.addRoom("east", room3);
-		room3.addRoom("west", room1);
-		room1.addRoom("north", room4);
-		room4.addRoom("south", room1);
+		room1.addRoom("south", this.currentRoom);
+		
 	}
 	
 	public void initializeLevel2 () {

@@ -24,4 +24,6 @@ public class Player {
 	public boolean gotKey(){
 		return this.key;
 	}
+	
+	
 }
