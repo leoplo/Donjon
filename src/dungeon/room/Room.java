@@ -55,4 +55,8 @@ public class Room {
 			newRoom = " new ";
 		return "You entered in a"+newRoom+"room";
 	}
+	
+	public Set<String> getDirections(){
+	    return this.rooms.keySet();
+	}
 }

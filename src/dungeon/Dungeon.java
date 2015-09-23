@@ -132,4 +132,17 @@ public class Dungeon {
 		room12.addRoom("south", room11);
 		room12.addRoom("north", exitRoom);	
 	}
+	
+	/**
+	 * Give all directions you can choose
+	 */
+	public void movementsPossibilities(){
+	    Set<String> directions = this.currentRoom.getDirections();
+	    String message = "";
+	    for (String direction : directions) {
+		message += "-" +  direction + "\n";
+	    }
+	    System.out.println("All directions you can choose:\n" + message);
+	    return;
+	}
 }
