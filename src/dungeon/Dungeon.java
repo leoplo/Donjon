@@ -12,11 +12,16 @@ public class Dungeon {
 
 	protected Room currentRoom = new Room();
 	protected final Scanner scanner = new Scanner(System.in);
+	protected Player player;
 
+	public Dungeon(Player player){
+		this.player = player;
+	}
+	
 	public Room getCurrentRoom() {
 		return currentRoom;
 	}
-
+	
 	/**
 	 * Interprets the user's command and executes it
 	 * @param command the user's command
