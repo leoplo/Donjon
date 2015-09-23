@@ -15,6 +15,8 @@ public class MonsterRoom extends Room {
 	}
 	
 	public String toString(){
-		return "You entered in a monster room, you've lost "+this.attackPoints+" helth points.";
+		if(this.visited)
+			return super.toString();
+		return super.toString() +", a monster is standing right here in front of you, you loose "+this.attackPoints+" helth points.";
 	}
 }

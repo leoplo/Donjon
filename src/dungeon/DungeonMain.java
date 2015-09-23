@@ -3,7 +3,8 @@ package dungeon;
 public class DungeonMain {
 	
 	public static void main(String[] args) {
-		Dungeon dungeon = new Dungeon();
+		/* nom player stdin scanner pour new Player() */
+		Dungeon dungeon = new Dungeon(player);
 		dungeon.initializeLevel1();
 		if (dungeon.start()) {
 			dungeon.initializeLevel2();

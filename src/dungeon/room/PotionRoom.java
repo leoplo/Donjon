@@ -15,6 +15,8 @@ public class PotionRoom extends Room {
 	}
 
 	public String toString() {
-		return "You entered in a new room and you found a potion, you are heal by "+this.heal+" helth points";
+		if(this.visited)
+			return super.toString();
+		return super.toString()+ "where you find a potion, you are heal by "+this.heal+" helth points";
 	}
 }

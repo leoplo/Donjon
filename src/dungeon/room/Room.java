@@ -9,6 +9,7 @@ import java.util.*;
 public class Room {
 
 	protected Map<String,Room> rooms;
+	protected boolean visited;
 	protected boolean gameIsLost;
 	protected boolean gameIsWin;
 	
@@ -49,6 +50,9 @@ public class Room {
 	}
 	
 	public String toString() {
-		return "You entered in a room";
+		String newRoom = " ";
+		if(!this.visited)
+			newRoom = " new ";
+		return "You entered in a"+newRoom+"room";
 	}
 }

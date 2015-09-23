@@ -7,6 +7,7 @@ public class Player {
 	
 	public Player (String name){
 		this.name = name;
+		this.healthPoints = 100;
 	}
 	
 	public void isAttacked(int attack){
@@ -24,5 +25,8 @@ public class Player {
 	public boolean gotKey(){
 		return this.key;
 	}
-	
+
+	public String toString(){
+		return this.name+", "+this.healthPoints+" health points left.";
+	}
 }
