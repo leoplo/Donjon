@@ -2,6 +2,8 @@ package dungeon.room;
 
 import java.util.*;
 
+import dungeon.Player;
+
 /**
  * The class <code>Room</code> represents a Dungeon room.
  */
@@ -9,12 +11,15 @@ import java.util.*;
 public class Room {
 
 	protected Map<String,Room> rooms;
+	protected Map<String,Boolean> isLocked;
+	protected Player player;
 	protected boolean visited;
 	protected boolean gameIsLost;
 	protected boolean gameIsWin;
 	
 	public Room () {
 		this.rooms = new HashMap<String,Room>();
+		this.isLocked = new HashMap<String,Boolean>();
 		this.gameIsLost = false;
 		this.gameIsWin = false;
 		this.rooms.put("north", null);
@@ -23,20 +28,30 @@ public class Room {
 		this.rooms.put("east", null);
 	}
 
-
-	public void addRoom (String direction, Room room) {
+	public boolean addRoom (String direction, Room room) {
+		return addRoom (direction, room, false);
+	}
+	
+	public boolean addRoom (String direction, Room room, boolean locked) {
+		if (direction == null || room == null)
+			return false;
 		this.rooms.put(direction, room);
+		this.isLocked.put(direction, locked);
+		return true;
 	}
 	
 	/**
 	 * This method returns the room associated to the chosen direction
 	 * @param direction the chosen direction
 	 * @exception InvalidParameterException if the direction doesn't exist
+	 * @exception IllegalStateException if the door (of the direction) is locked
 	 * @return the room associated to the chosen direction
 	 */
-	public Room goRoom (String direction) throws IllegalArgumentException {
+	public Room goRoom (String direction) throws IllegalArgumentException, IllegalStateException {
 		if (! this.rooms.containsKey(direction))
 			throw new IllegalArgumentException();
+		if (this.isLocked.containsKey(direction) && this.isLocked.get(direction)) // modif in Dungeon (try/catch) ?????????????????????????????????????????????????????????????????
+			throw new IllegalStateException();
 		return this.rooms.get(direction);
 	}
 	
@@ -58,5 +73,9 @@ public class Room {
 	
 	public Set<String> getDirections(){
 	    return this.rooms.keySet();
+	}
+	
+	public void roomAction(){
+		this.visited = true;
 	}
 }

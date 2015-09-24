@@ -1,6 +1,5 @@
 package dungeon.room;
 
-import dungeon.Player;
 
 public class MonsterRoom extends Room {
 	protected int attackPoints;
@@ -10,9 +9,11 @@ public class MonsterRoom extends Room {
 		this.attackPoints = attackPoints;
 	}
 	
-	public void attackPlayer(Player player){
-		if (!this.visited)
-			player.isAttacked(this.attackPoints);
+	public void roomAction(){
+		if (!this.visited){
+			this.player.isAttacked(this.attackPoints);
+			super.roomAction();
+		}
 	}
 	
 	public String toString(){

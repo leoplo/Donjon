@@ -7,4 +7,11 @@ public class KeyRoom extends Room {
 			return super.toString();
 		return "You entered in this room and you just found a key";
 	}
+	
+	public void roomAction() {
+		if (!this.visited){
+			this.player.pickKey();
+			super.roomAction();
+		}
+	}
 }
