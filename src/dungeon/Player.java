@@ -30,4 +30,9 @@ public class Player {
 	public String toString(){
 		return this.name+", "+this.healthPoints+" health points left.";
 	}
+	
+	public void pickKey() {
+		this.key++;
+	}
+	
 }
