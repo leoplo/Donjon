@@ -1,8 +1,9 @@
 package dungeon;
 
-import java.util.*;
 
+import java.util.*;
 import dungeon.room.*;
+import dungeon.util.*;
 
 /**
  * The class <code>Dungeon</code> represents a dungeon game containing Rooms.
@@ -11,12 +12,7 @@ import dungeon.room.*;
 public class Dungeon {
 
 	protected Room currentRoom = new Room();
-	protected final Scanner scanner = new Scanner(System.in);
-	protected Player player;
-
-	public Dungeon(Player player){
-		this.player = player;
-	}
+	protected final ConsoleInterface console = new ConsoleInterface();
 	
 	public Room getCurrentRoom() {
 		return currentRoom;
@@ -30,30 +26,32 @@ public class Dungeon {
 		try {
 			Room nextRoom = this.currentRoom.goRoom(direction);
 			if (nextRoom == null) {
-				System.out.println("You can't go this way");
+				this.console.printMessage("You can't go this way");
 			} else {
-				System.out.println("You are in a new room");
+				this.console.printMessage("You are in a new dungeon");
 				this.currentRoom = nextRoom;
 			}
 		} catch (IllegalArgumentException e) {
-			System.out.println("I don't know what you mean");
+			this.console.printMessage("I don't know what you mean");
 		}
 	}
 
 	public boolean start() {
-		System.out.println("You are in a new dungeon");
+		this.console.printMessage("You are in a new room");
 		do {
-			System.out.println("What do you want to do now ?");
-			System.out.print("> ");
+			this.console.printMessage("What do you want to do now ?\n> ");
 			// Read a command from the user (stdin)
-			String line = this.scanner.nextLine();
-			changingRoom(line);
+			String line = console.readCommand();
+			if(line != "infos")
+				changingRoom(line);
+			else
+				console.printMessage(movementsPossibilities());
 		} while (!gameIsFinished());
 		if (this.currentRoom.isWinningRoom()) {
-			System.out.println("You win !");
+			this.console.printMessage("You win !");
 			return true;
 		} else {
-			System.out.println("You loose !");
+			this.console.printMessage("You loose !");
 			return false;
 		}
 	}
