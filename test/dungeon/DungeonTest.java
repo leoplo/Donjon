@@ -7,6 +7,7 @@ public class DungeonTest {
 	
 	@Before
 	public void createDungeon () {
-		dungeon = new Dungeon();
+		Player player = new Player("joueur");
+		dungeon = new Dungeon(player);
 	}
 }

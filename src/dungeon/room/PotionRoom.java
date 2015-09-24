@@ -11,7 +11,8 @@ public class PotionRoom extends Room {
 	}
 	
 	public void healPlayer(Player player){
-		player.isHeal(this.heal);
+		if (!this.visited)
+			player.isHeal(this.heal);
 	}
 
 	public String toString() {

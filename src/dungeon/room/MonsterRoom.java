@@ -11,7 +11,8 @@ public class MonsterRoom extends Room {
 	}
 	
 	public void attackPlayer(Player player){
-		player.isAttacked(this.attackPoints);
+		if (!this.visited)
+			player.isAttacked(this.attackPoints);
 	}
 	
 	public String toString(){

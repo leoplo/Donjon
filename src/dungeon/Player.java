@@ -3,11 +3,12 @@ package dungeon;
 public class Player {
 	protected int healthPoints;
 	protected String name;
-	protected boolean key = false;
+	protected int key;
 	
 	public Player (String name){
 		this.name = name;
 		this.healthPoints = 100;
+		this.key = 0;
 	}
 	
 	public void isAttacked(int attack){
@@ -23,7 +24,7 @@ public class Player {
 	}
 
 	public boolean gotKey(){
-		return this.key;
+		return this.key > 0;
 	}
 
 	public String toString(){
