@@ -23,8 +23,11 @@ public class Player {
 		return (this.healthPoints <= 0);
 	}
 
-	public boolean gotKey(){
-		return this.key > 0;
+	public boolean giveKey(){
+		if (this.key == 0)
+			return false;
+		this.key --;
+		return true;
 	}
 
 	public String toString(){

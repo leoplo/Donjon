@@ -5,7 +5,7 @@ import java.util.*;
 import dungeon.Player;
 
 /**
- * The class <code>Room</code> represents a Dungeon room.
+ * The class <code>Room</code> represents a Dungeon room. A room contains its neighbours.
  */
 
 public class Room {
@@ -13,14 +13,14 @@ public class Room {
 	protected Map<String,Room> rooms;
 	protected Map<String,Boolean> isLocked;
 	protected boolean visited;
-	protected boolean gameIsLost;
-	protected boolean gameIsWin;
+	protected boolean losingRoom;
+	protected boolean winningRoom;
 	
 	public Room () {
 		this.rooms = new HashMap<String,Room>();
 		this.isLocked = new HashMap<String,Boolean>();
-		this.gameIsLost = false;
-		this.gameIsWin = false;
+		this.losingRoom = false;
+		this.winningRoom = false;
 		this.rooms.put("north", null);
 		this.rooms.put("south", null);
 		this.rooms.put("west", null);
@@ -60,11 +60,11 @@ public class Room {
 	
 
 	public boolean isWinningRoom () {
-		return this.gameIsWin;
+		return this.winningRoom;
 	}
 	
 	public boolean isLosingRoom () {
-		return this.gameIsLost;
+		return this.losingRoom;
 	}
 	
 	public String getMessage() {
