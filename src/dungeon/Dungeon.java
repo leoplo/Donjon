@@ -138,6 +138,7 @@ public class Dungeon {
 	    Set<String> directions = this.currentRoom.getDirections();
 	    String message = "";
 	    for (String direction : directions) {
+	    	if(this.currentRoom.getRooms().get(direction) != null)
 		message += "-" +  direction + "\n";
 	    }
 	    return("All directions you can choose:\n" + message);

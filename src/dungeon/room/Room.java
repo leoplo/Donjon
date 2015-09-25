@@ -27,6 +27,10 @@ public class Room {
 		this.rooms.put("west", null);
 		this.rooms.put("east", null);
 	}
+	
+	public Map<String,Room> getRooms(){
+		return this.rooms;
+	}
 
 	public boolean addRoom (String direction, Room room) {
 		return addRoom (direction, room, false);
