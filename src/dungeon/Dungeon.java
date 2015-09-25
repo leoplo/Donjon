@@ -48,7 +48,7 @@ public class Dungeon {
 			this.console.printMessage("What do you want to do now ?\n> ");
 			// Read a command from the user (stdin)
 			String line = console.readCommand();
-			if(line != "infos") {
+			if(!line.equals("infos")) {
 				changingRoom(line);
 				this.console.printMessage(this.currentRoom.getMessage());
 			} else
@@ -67,7 +67,7 @@ public class Dungeon {
 		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom();
 	}
 	
-	public void initializeLevel1 () {
+	/*public void initializeLevel1 () {
 		Room entryRoom = new Room();
 		Room room1 = new Room();
 		Room room2 = new Room();
@@ -85,7 +85,7 @@ public class Dungeon {
 		this.currentRoom.addRoom("north", room1);
 		room1.addRoom("south", this.currentRoom);
 		
-	}
+	}*/
 	
 	public void initializeLevel2 () {
 		Room entryRoom = new Room();
@@ -145,22 +145,9 @@ public class Dungeon {
 	    Set<String> directions = this.currentRoom.getDirections();
 	    String message = "";
 	    for (String direction : directions) {
+	    	if(this.currentRoom.getRooms().get(direction) != null)
 		message += "-" +  direction + "\n";
 	    }
 	    return("All directions you can choose:\n" + message);
-	}
-	
-	public void startAllLevel () {
-		this.player = new Player(console.readName());
-		Dungeon dungeon = new Dungeon();
-		dungeon.initializeLevel1();
-		if (dungeon.start()) {
-			dungeon.initializeLevel2();
-			if (dungeon.start()) {
-				dungeon.initializeLevel1();
-				dungeon.start();
-			}
-		}
-		this.console.printMessage("Congratulations "+this.player.name+", you win !");
 	}
 }

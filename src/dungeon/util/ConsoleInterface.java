@@ -17,7 +17,7 @@ public class ConsoleInterface {
 	public String readCommand() {
 		String command = "";
 		do {
-			this.printMessage("> ");
+			System.out.print("> ");
 			command = Input.readString().trim();
 		} while (!command.equals(""));
 		if(command.equals("infos"))
@@ -29,7 +29,7 @@ public class ConsoleInterface {
 		this.printMessage("Please choose your name :");
 		String name = "";
 		do {
-			this.printMessage("> ");
+			System.out.print("> ");
 			name = Input.readString().trim();
 		} while (!name.equals(""));
 		return name;
