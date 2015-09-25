@@ -42,7 +42,7 @@ public class Dungeon {
 			this.console.printMessage("What do you want to do now ?\n> ");
 			// Read a command from the user (stdin)
 			String line = console.readCommand();
-			if(line != "infos")
+			if(!line.equals("infos"))
 				changingRoom(line);
 			else
 				console.printMessage(movementsPossibilities());

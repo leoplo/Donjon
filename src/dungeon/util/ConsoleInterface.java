@@ -17,8 +17,8 @@ public class ConsoleInterface {
 	public String readCommand() {
 		String command = Input.readString();
 		command = command.trim();
-		if(command == "infos")
+		if(command.equals("infos"))
 			return command;
-		return (command.substring(1)).trim();
+		return (command.substring(2)).trim();
 	}
 }
