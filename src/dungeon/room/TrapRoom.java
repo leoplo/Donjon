@@ -6,7 +6,7 @@ public class TrapRoom extends Room {
 		this.gameIsLost = true;
 	}
 	
-	public String toString(){
+	public String getMessage(){
 		return "IT'S A TRAP !!! You fall down and scratch on the ground with violence.";
 	}
 }

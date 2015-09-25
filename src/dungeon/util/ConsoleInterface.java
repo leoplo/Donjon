@@ -15,10 +15,23 @@ public class ConsoleInterface {
 	}
 	
 	public String readCommand() {
-		String command = Input.readString();
-		command = command.trim();
-		if(command == "infos")
+		String command = "";
+		do {
+			this.printMessage("> ");
+			command = Input.readString().trim();
+		} while (!command.equals(""));
+		if(command.equals("infos"))
 			return command;
-		return (command.substring(1)).trim();
+		return (command.substring(2)).trim();
+	}
+	
+	public String readName() {
+		this.printMessage("Please choose your name :");
+		String name = "";
+		do {
+			this.printMessage("> ");
+			name = Input.readString().trim();
+		} while (!name.equals(""));
+		return name;
 	}
 }

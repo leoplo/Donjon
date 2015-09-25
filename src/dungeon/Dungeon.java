@@ -10,7 +10,8 @@ import dungeon.util.*;
  */
 
 public class Dungeon {
-
+	
+	protected Player player;
 	protected Room currentRoom = new Room();
 	protected final ConsoleInterface console = new ConsoleInterface();
 	
@@ -30,6 +31,8 @@ public class Dungeon {
 			} else {
 				this.console.printMessage("You are in a new dungeon");
 				this.currentRoom = nextRoom;
+				this.currentRoom.roomAction(player);
+				this.console.printMessage(this.player.toString());
 			}
 		} catch (IllegalArgumentException e) {
 			this.console.printMessage("I don't know what you mean");
@@ -37,15 +40,19 @@ public class Dungeon {
 	}
 
 	public boolean start() {
-		this.console.printMessage("You are in a new room");
+		
+		this.console.printMessage(this.currentRoom.getMessage());
+		this.currentRoom.roomAction(player);
+		this.console.printMessage(this.player.toString());
 		do {
 			this.console.printMessage("What do you want to do now ?\n> ");
 			// Read a command from the user (stdin)
 			String line = console.readCommand();
-			if(line != "infos")
+			if(line != "infos") {
 				changingRoom(line);
-			else
-				console.printMessage(movementsPossibilities());
+				this.console.printMessage(this.currentRoom.getMessage());
+			} else
+				console.printMessage(this.movementsPossibilities());
 		} while (!gameIsFinished());
 		if (this.currentRoom.isWinningRoom()) {
 			this.console.printMessage("You win !");
@@ -141,5 +148,19 @@ public class Dungeon {
 		message += "-" +  direction + "\n";
 	    }
 	    return("All directions you can choose:\n" + message);
+	}
+	
+	public void startAllLevel () {
+		this.player = new Player(console.readName());
+		Dungeon dungeon = new Dungeon();
+		dungeon.initializeLevel1();
+		if (dungeon.start()) {
+			dungeon.initializeLevel2();
+			if (dungeon.start()) {
+				dungeon.initializeLevel1();
+				dungeon.start();
+			}
+		}
+		this.console.printMessage("Congratulations "+this.player.name+", you win !");
 	}
 }

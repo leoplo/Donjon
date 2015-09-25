@@ -11,11 +11,11 @@ public class Player {
 		this.key = 0;
 	}
 	
-	public void isAttacked(int attack){
+	public void attacked(int attack){
 		this.healthPoints -= attack;
 	}
 	
-	public void isHeal(int heal){
+	public void healed(int heal){
 		this.healthPoints += heal;
 	}
 	

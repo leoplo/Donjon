@@ -12,7 +12,6 @@ public class Room {
 
 	protected Map<String,Room> rooms;
 	protected Map<String,Boolean> isLocked;
-	protected Player player;
 	protected boolean visited;
 	protected boolean gameIsLost;
 	protected boolean gameIsWin;
@@ -64,7 +63,7 @@ public class Room {
 		return this.gameIsLost;
 	}
 	
-	public String toString() {
+	public String getMessage() {
 		String newRoom = " ";
 		if(!this.visited)
 			newRoom = " new ";
@@ -75,7 +74,7 @@ public class Room {
 	    return this.rooms.keySet();
 	}
 	
-	public void roomAction(){
+	public void roomAction(Player player){
 		this.visited = true;
 	}
 }
