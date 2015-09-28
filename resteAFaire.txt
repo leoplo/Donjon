@@ -1,0 +1,18 @@
+Unit.Player.switchWeapon -> boolean
+Combat : break -> return
+items -> suppr @Override
+	  -> get Description : restored helth POINTS
+	  -> renommer use() (Item action)
+	  -> revoir equals (sur String)
+Room  -> deja visité pour Items
+	  -> getDirection : paramètre pour sortie cachées ou visibles 
+	  -> ????????????????????????????????????????????????
+Exit  -> IShidden ISlocked
+
+ConsoleInterface -> readCommand : return command.tim()
+				 -> readName() > dev/null
+				 -> gerer les "Levels"
+
+Dungeon -> reecrire mouvementPossibilities
+
+				-------- TEST !!!! --------
