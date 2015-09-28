@@ -1,10 +1,10 @@
 package dungeon;
 
-
-import java.util.*;
+import java.util.Set;
 
 import dungeon.item.*;
 import dungeon.room.*;
+import dungeon.room.exit.Exit;
 import dungeon.util.*;
 import dungeon.unit.*;
 
@@ -32,7 +32,7 @@ public class Dungeon {
 	 * @param command the user's command
 	 */
 	public void changingRoom(String direction) {
-		try {
+		/*try {
 			Room nextRoom = this.currentRoom.goRoom(direction);
 			this.currentRoom = nextRoom;
 			this.console.printMessage(this.currentRoom.getMessage());
@@ -42,7 +42,21 @@ public class Dungeon {
 			this.console.printMessage("I don't know what you mean.");
 		} catch (IllegalStateException e) {
 			this.console.printMessage("The exit is locked.");
+		}*/
+		Room nextRoom = this.currentRoom.getRoom(direction);
+		if (nextRoom == null) {
+			this.console.printMessage("I don't know what you mean.");
+			return;
 		}
+		Exit exit = this.currentRoom.getExit(direction);
+		if (! exit.isOpen()) {
+			this.console.printMessage(exit.getMessage());
+			return;
+		}
+		this.currentRoom = nextRoom;
+		this.console.printMessage(this.currentRoom.getMessage());
+		this.currentRoom.roomAction(player);
+		this.console.printMessage(this.player.toString());
 	}
 
 	public boolean start() {

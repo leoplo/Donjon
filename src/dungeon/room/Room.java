@@ -26,10 +26,6 @@ public class Room {
 		this.winningRoom = false;
 	}
 	
-	public Map<String,Room> getRooms(){
-		return this.neighbours;
-	}
-	
 	public void addRoom (String direction, Room room, Exit exit) {
 		if (direction == null || room == null || room == null)
 			throw new NullPointerException();
@@ -44,14 +40,21 @@ public class Room {
 	 * @exception IllegalStateException if the door (of the direction) is locked
 	 * @return the room associated to the chosen direction
 	 */
-	public Room goRoom (String direction) throws IllegalArgumentException, IllegalStateException {
+	/*public Room goRoom (String direction) throws IllegalArgumentException, IllegalStateException {
 		if (! this.neighbours.containsKey(direction))
 			throw new IllegalArgumentException();
 		if (! this.exits.get(direction).isOpen()) // modif in Dungeon (try/catch) ?????????????????????????????????????????????????????????????????
 			throw new IllegalStateException();
 		return this.neighbours.get(direction); // ???????????????????????????????????????????
+	}*/
+	
+	public Room getRoom (String direction) {
+		return this.neighbours.get(direction);
 	}
 	
+	public Exit getExit (String direction) {
+		return this.exits.get(direction);
+	}
 
 	public boolean isWinningRoom () {
 		return this.winningRoom;
