@@ -15,7 +15,7 @@ public class Input {
 	}
 
 	/**
-    	 * read an integer from standard input
+	 * read an integer from standard input
    	 * 
 	 * @return the read integer
 	 * @exception java.io.IOException if input does not correspond to an integer

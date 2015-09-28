@@ -2,8 +2,11 @@ package dungeon;
 
 
 import java.util.*;
+
+import dungeon.item.*;
 import dungeon.room.*;
 import dungeon.util.*;
+import dungeon.unit.*;
 
 /**
  * The class <code>Dungeon</code> represents a dungeon game containing Rooms.
@@ -26,31 +29,26 @@ public class Dungeon {
 	public void changingRoom(String direction) {
 		try {
 			Room nextRoom = this.currentRoom.goRoom(direction);
-			if (nextRoom == null) {
-				this.console.printMessage("You can't go this way");
-			} else {
-				this.console.printMessage("You are in a new dungeon");
-				this.currentRoom = nextRoom;
-				this.currentRoom.roomAction(player);
-				this.console.printMessage(this.player.toString());
-			}
+			this.console.printMessage("You are in a new dungeon");
+			this.currentRoom = nextRoom;
+			this.console.printMessage(this.currentRoom.getMessage());
+			this.currentRoom.roomAction(player);
+			this.console.printMessage(this.player.toString());
 		} catch (IllegalArgumentException e) {
 			this.console.printMessage("I don't know what you mean");
 		}
 	}
 
 	public boolean start() {
-		
 		this.console.printMessage(this.currentRoom.getMessage());
 		this.currentRoom.roomAction(player);
 		this.console.printMessage(this.player.toString());
 		do {
-			this.console.printMessage("What do you want to do now ?\n> ");
+			this.console.printMessage("What do you want to do now ?");
 			// Read a command from the user (stdin)
 			String line = console.readCommand();
 			if(!line.equals("infos")) {
 				changingRoom(line);
-				this.console.printMessage(this.currentRoom.getMessage());
 			} else
 				console.printMessage(this.movementsPossibilities());
 		} while (!gameIsFinished());
@@ -67,25 +65,25 @@ public class Dungeon {
 		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom();
 	}
 	
-	/*public void initializeLevel1 () {
+	public void initializeLevel1 () {
 		Room entryRoom = new Room();
 		Room room1 = new Room();
-		Room room2 = new Room();
-		Room room4 = new Room();
-		Room room5 = new Room();
-		Room room6 = new Room();
-		Room room7 = new Room();
-		Room room8 = new Room();
-		Room room9 = new Room();
-		Room keyRoom = new KeyRoom();
+		Room roomWithMonster = new MonsterRoom(new Monster("Orc", 20, 6));
+		Room roomWithPotion = new Room();
+		roomWithPotion.addItemInTheRoom(new Potion("Healing Potion", 10));
 		Room exitRoom = new ExitRoom();
 		Room trapRoom = new TrapRoom();
 		
 		this.currentRoom = entryRoom;
 		this.currentRoom.addRoom("north", room1);
-		room1.addRoom("south", this.currentRoom);
-		
-	}*/
+		room1.addRoom("north", roomWithMonster);
+		room1.addRoom("south", entryRoom);
+		roomWithMonster.addRoom("west", roomWithPotion);
+		roomWithMonster.addRoom("south", room1);
+		roomWithPotion.addRoom("north", exitRoom);
+		roomWithPotion.addRoom("south", trapRoom);
+		roomWithPotion.addRoom("east", roomWithMonster);
+	}
 	
 	public void initializeLevel2 () {
 		Room entryRoom = new Room();
@@ -146,7 +144,7 @@ public class Dungeon {
 	    String message = "";
 	    for (String direction : directions) {
 	    	if(this.currentRoom.getRooms().get(direction) != null)
-		message += "-" +  direction + "\n";
+	    		message += "-" +  direction + "\n";
 	    }
 	    return("All directions you can choose:\n" + message);
 	}

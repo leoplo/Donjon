@@ -1,28 +1,30 @@
 package dungeon.room;
 
-import java.util.Random;
-
-import dungeon.Player;
+import dungeon.unit.Player;
+import dungeon.combat.Combat;
+import dungeon.unit.Monster;
 
 
 public class MonsterRoom extends Room {
-	protected int attackPoints;
+	protected Monster monster;
+	protected Combat combat;
 	
-	public MonsterRoom(int attackPointsMax, int attackPointsMin){
+	public MonsterRoom(Monster monster){
 		super();
-		this.attackPoints = attackPointsMin + (new Random()).nextInt(attackPointsMax - attackPointsMin+1);
+		this.monster = monster;
 	}
 	
 	public void roomAction(Player player){
-		if (!this.visited){
-			player.attacked(this.attackPoints);
-			super.roomAction(player);
+		super.roomAction(player);
+		
+		if (this.monster.isAlive()) {
+			this.combat = new Combat(player, monster);
 		}
 	}
 	
 	public String getMessage(){
 		if(this.visited)
-			return super.toString();
-		return super.toString() +", a monster is standing right here in front of you, you loose "+this.attackPoints+" helth points.";
+			return super.getMessage();
+		return super.getMessage() + " A monster is standing right here in front of you.";
 	}
 }
