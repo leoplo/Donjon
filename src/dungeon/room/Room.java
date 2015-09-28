@@ -2,6 +2,7 @@ package dungeon.room;
 
 import java.util.*;
 import dungeon.item.Item;
+import dungeon.room.exit.Exit;
 import dungeon.unit.Player;
 
 /**
@@ -11,7 +12,7 @@ import dungeon.unit.Player;
 public class Room {
 
 	protected Map<String,Room> neighbours;
-	protected Map<String,Boolean> isLocked;
+	protected Map<String,Exit> exits;
 	protected List<Item> itemsInTheRoom;
 	protected boolean visited;
 	protected boolean losingRoom;
@@ -19,7 +20,7 @@ public class Room {
 	
 	public Room () {
 		this.neighbours = new HashMap<String,Room>();
-		this.isLocked = new HashMap<String,Boolean>();
+		this.exits = new HashMap<String,Exit>();
 		this.itemsInTheRoom = new ArrayList<Item>();
 		this.losingRoom = false;
 		this.winningRoom = false;
@@ -28,17 +29,12 @@ public class Room {
 	public Map<String,Room> getRooms(){
 		return this.neighbours;
 	}
-
-	public boolean addRoom (String direction, Room room) {
-		return addRoom (direction, room, false);
-	}
 	
-	public boolean addRoom (String direction, Room room, boolean locked) {
-		if (direction == null || room == null)
-			return false;
+	public void addRoom (String direction, Room room, Exit exit) {
+		if (direction == null || room == null || room == null)
+			throw new NullPointerException();
 		this.neighbours.put(direction, room);
-		this.isLocked.put(direction, locked);
-		return true;
+		this.exits.put(direction, exit);
 	}
 	
 	/**
@@ -51,9 +47,9 @@ public class Room {
 	public Room goRoom (String direction) throws IllegalArgumentException, IllegalStateException {
 		if (! this.neighbours.containsKey(direction))
 			throw new IllegalArgumentException();
-		if (this.isLocked.containsKey(direction) && this.isLocked.get(direction)) // modif in Dungeon (try/catch) ?????????????????????????????????????????????????????????????????
+		if (! this.exits.get(direction).isOpen()) // modif in Dungeon (try/catch) ?????????????????????????????????????????????????????????????????
 			throw new IllegalStateException();
-		return this.neighbours.get(direction);
+		return this.neighbours.get(direction); // ???????????????????????????????????????????
 	}
 	
 

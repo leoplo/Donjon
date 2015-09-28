@@ -20,4 +20,8 @@ public class Exit {
 	public boolean isHidden(){
 		return this.hidden;
 	}
+	
+	public String getMessage () {
+		return "The exit is open";
+	}
 }

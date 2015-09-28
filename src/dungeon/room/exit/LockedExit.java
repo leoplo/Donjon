@@ -4,8 +4,12 @@ import dungeon.unit.Player;
 
 public abstract class LockedExit extends Exit {
 
-	public String unlock(Player player){
+	public boolean unlock(Player player){
 		this.locked = false;
-		return "You've unlocked the exit.";
+		return true;
+	}
+	
+	public String getMessage () {
+		return "The exit is locked";
 	}
 }

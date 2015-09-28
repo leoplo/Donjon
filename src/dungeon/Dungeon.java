@@ -16,10 +16,15 @@ public class Dungeon {
 	
 	protected Player player;
 	protected Room currentRoom = new Room();
-	protected final ConsoleInterface console = new ConsoleInterface();
+	protected final ConsoleInterface console;
 	
 	public Room getCurrentRoom() {
 		return currentRoom;
+	}
+	
+	public Dungeon (ConsoleInterface console, Player player) {
+		this.console = console;
+		this.player = player;
 	}
 	
 	/**
@@ -29,17 +34,19 @@ public class Dungeon {
 	public void changingRoom(String direction) {
 		try {
 			Room nextRoom = this.currentRoom.goRoom(direction);
-			this.console.printMessage("You are in a new dungeon");
 			this.currentRoom = nextRoom;
 			this.console.printMessage(this.currentRoom.getMessage());
 			this.currentRoom.roomAction(player);
 			this.console.printMessage(this.player.toString());
 		} catch (IllegalArgumentException e) {
-			this.console.printMessage("I don't know what you mean");
+			this.console.printMessage("I don't know what you mean.");
+		} catch (IllegalStateException e) {
+			this.console.printMessage("The exit is locked.");
 		}
 	}
 
 	public boolean start() {
+		this.console.printMessage("You are in a new dungeon.");
 		this.console.printMessage(this.currentRoom.getMessage());
 		this.currentRoom.roomAction(player);
 		this.console.printMessage(this.player.toString());
@@ -74,7 +81,7 @@ public class Dungeon {
 		Room exitRoom = new ExitRoom();
 		Room trapRoom = new TrapRoom();
 		
-		this.currentRoom = entryRoom;
+		/*this.currentRoom = entryRoom;
 		this.currentRoom.addRoom("north", room1);
 		room1.addRoom("north", roomWithMonster);
 		room1.addRoom("south", entryRoom);
@@ -82,7 +89,7 @@ public class Dungeon {
 		roomWithMonster.addRoom("south", room1);
 		roomWithPotion.addRoom("north", exitRoom);
 		roomWithPotion.addRoom("south", trapRoom);
-		roomWithPotion.addRoom("east", roomWithMonster);
+		roomWithPotion.addRoom("east", roomWithMonster);*/
 	}
 	
 	public void initializeLevel2 () {
@@ -101,7 +108,7 @@ public class Dungeon {
 		Room exitRoom = new ExitRoom();
 		Room trapRoom = new TrapRoom();
 		// hidden exits "go back"
-		this.currentRoom = entryRoom;
+		/*this.currentRoom = entryRoom;
 		this.currentRoom.addRoom("west", room2);
 		this.currentRoom.addRoom("east", room4);
 		room2.addRoom("east", this.currentRoom);
@@ -133,7 +140,7 @@ public class Dungeon {
 		room11.addRoom("west", room10);
 		room11.addRoom("north", room12);
 		room12.addRoom("south", room11);
-		room12.addRoom("north", exitRoom);	
+		room12.addRoom("north", exitRoom);	*/
 	}
 	
 	/**

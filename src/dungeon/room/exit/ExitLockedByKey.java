@@ -11,9 +11,15 @@ public class ExitLockedByKey extends LockedExit {
 		this.associatedKey = associatedKey;
 	}
 	
-	public String unlock(Player player) {
-		if (player.hasKey(this.associatedKey))
-			return super.unlock(player) + "with a key.";
-		return "You need a key to unlock this exit.";
+	public boolean unlock(Player player) {
+		if (player.hasKey(this.associatedKey)) {
+			super.unlock(player);
+			return true;
+		}
+		return false;
+	}
+	
+	public String getMessage () {
+		return super.getMessage() + ", you need a key " + this.associatedKey.getName() +" to unlock this exit.";
 	}
 }
