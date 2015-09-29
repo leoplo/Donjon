@@ -19,15 +19,15 @@ public class Game {
 	}
 	
 	public void run() {
-		int currentLevel = 0;
+		int currentLevel = 1;
 		this.end = false;
 		
 		this.console.presentation();
 		
-		while(currentLevel < dungeons.size() && !this.end) {
-			this.console.printMessage("Level " + (currentLevel+1) + " begin!");
+		while(currentLevel-1 < dungeons.size() && !this.end) {
+			this.console.printMessage("Level " + currentLevel + " begin!");
 			
-			if(this.runLevel(currentLevel)) {
+			if(this.runLevel(currentLevel-1)) {
 				this.console.printMessage("Congratulations, you have finished the level " + currentLevel + " !");
 				currentLevel++;
 			}

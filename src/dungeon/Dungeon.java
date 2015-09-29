@@ -61,8 +61,9 @@ public class Dungeon {
 		}
 		
 		this.currentRoom = nextRoom;
+		String result = this.currentRoom.getMessage();
 		this.currentRoom.roomAction(player);
-		return this.currentRoom.getMessage();
+		return result;
 	}
 	
 	public boolean gameIsFinished() {

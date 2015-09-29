@@ -27,7 +27,7 @@ public class Room {
 	}
 	
 	public void addRoom (String direction, Room room, Exit exit) {
-		if (direction == null || room == null || room == null)
+		if (direction == null || room == null || exit == null)
 			throw new NullPointerException();
 		this.neighbours.put(direction, room);
 		this.exits.put(direction, exit);
