@@ -15,11 +15,9 @@ public class Combat {
 		while(this.fighter1.isAlive() && this.fighter2.isAlive()) {
 			this.fighter1.attack(fighter2);
 			
-			if(this.fighter2.isDead()) {
-				break;
+			if(this.fighter2.isAlive()) {
+				this.fighter2.attack(fighter1);
 			}
-			
-			this.fighter2.attack(fighter1);
 		}
 	}
 	

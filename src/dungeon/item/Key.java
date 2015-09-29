@@ -11,4 +11,9 @@ public class Key extends Item {
 	public void use(Player player) {
 		player.pickKey(this);
 	}
+	
+	@Override
+	public String getDescription() {
+		return "Unlock an exit";
+	}
 }

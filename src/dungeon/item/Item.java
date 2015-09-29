@@ -15,4 +15,6 @@ public abstract class Item {
 	}
 	
 	public abstract void use(Player player);
+	
+	public abstract String getDescription();
 }

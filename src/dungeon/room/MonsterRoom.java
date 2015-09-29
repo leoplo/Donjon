@@ -18,13 +18,14 @@ public class MonsterRoom extends Room {
 		super.roomAction(player);
 		
 		if (this.monster.isAlive()) {
-			this.combat = new Combat(player, monster);
+			this.combat = new Combat(monster, player);
 		}
 	}
 	
 	public String getMessage(){
-		if(this.visited)
+		if(this.monster.isDead())
 			return super.getMessage();
-		return super.getMessage() + " A monster is standing right here in front of you.";
+		
+		return super.getMessage() + " A monster (" + this.monster.getName() + ") is standing right here in front of you.";
 	}
 }

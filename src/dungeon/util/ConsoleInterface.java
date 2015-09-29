@@ -15,22 +15,26 @@ public class ConsoleInterface {
 	
 	public String readCommand() {
 		String command = "";
+		
 		do {
+			this.printMessage("What do you want to do now ?");
 			System.out.print("> ");
 			command = Input.readString().trim();
 		} while (command.equals(""));
-		if(command.equals("infos"))
-			return command;
-		return (command.substring(2)).trim();
+		
+		return command;
 	}
 	
 	public String readName() {
 		this.printMessage("Please choose your name :");
+		
 		String name = "";
+		
 		do {
 			System.out.print("> ");
 			name = Input.readString().trim();
 		} while (name.equals(""));
+		
 		return name;
 	}
 }
