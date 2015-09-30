@@ -4,8 +4,8 @@ public class Exit {
 	protected boolean isHidden;
 	protected boolean isLocked;
 	
-	public Exit(boolean hidden){
-		this.isHidden = hidden;
+	public Exit(boolean isHidden){
+		this.isHidden = isHidden;
 		this.isLocked = false;
 	}
 	

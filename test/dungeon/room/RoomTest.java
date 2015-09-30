@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import dungeon.item.Key;
@@ -14,19 +13,18 @@ import dungeon.unit.Player;
 
 
 public class RoomTest {
-	protected Room room;
 	
-	@Before
-	public void createRoom() {
-		room = new Room();
+	public Room createRoom() {
+		return new Room();
 	}
 	
 	@Test
-	public void testAddRoomAndGetRoomAndGetExit () {
-		Room room1 = new Room();
-		Room room2 = new Room();
-		Room room3 = new Room();
-		Room room4 = new Room();
+	public void getRoomAndGetExitTest () {
+		Room room = createRoom();
+		Room room1 = createRoom();
+		Room room2 = createRoom();
+		Room room3 = createRoom();
+		Room room4 = createRoom();
 		Exit exit1 = new Exit();
 		Exit exit2 = new Exit(true);
 		Exit exit3 = new Exit(true);
@@ -48,17 +46,20 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testIsWinningRoom () {
-		assertFalse(this.room.isWinningRoom());
+	public void isWinningRoomTest () {
+		Room room = createRoom();
+		assertFalse(room.isWinningRoom());
 	}
 	
 	@Test
-	public void testIsLosingRoom () {
-		assertFalse(this.room.isLosingRoom());
+	public void isLosingRoomTest () {
+		Room room = createRoom();
+		assertFalse(room.isLosingRoom());
 	}
 	
 	@Test
-	public void testAddItemInTheRoomAndRoomAction () {
+	public void addItemInTheRoomAndRoomActionTest () {
+		Room room = createRoom();
 		Player player = new Player("player", 100);
 		Key key = new Key("key");
 		assertFalse(player.hasKey(key));
@@ -68,11 +69,12 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testGetDirections () {
-		Room room1 = new Room();
-		Room room2 = new Room();
-		Room room3 = new Room();
-		Room room4 = new Room();
+	public void getDirectionsTest () {
+		Room room = createRoom();
+		Room room1 = createRoom();
+		Room room2 = createRoom();
+		Room room3 = createRoom();
+		Room room4 = createRoom();
 		Exit exit1 = new Exit();
 		Exit exit2 = new Exit(true);
 		Exit exit3 = new Exit(true);
