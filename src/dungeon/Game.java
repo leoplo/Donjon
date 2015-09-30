@@ -12,13 +12,10 @@ import dungeon.util.ConsoleInterface;
 public class Game {
 	private Player player;
 	private List<Dungeon> dungeons;
-	private boolean end;
 	private ConsoleInterface console;
 	
-	public Game(Player player, List<Dungeon> dungeons) {
-		this.player = player;
+	public Game(List<Dungeon> dungeons) {
 		this.dungeons = dungeons;
-		this.end = false;
 		this.console = new ConsoleInterface();
 	}
 	
@@ -27,24 +24,27 @@ public class Game {
 	 * After the presentation the game starts and the hand is given to the player.
 	 */
 	public void run() {
-		int currentLevel = 1;
-		this.end = false;
+		int currentLevel = 0;
+		boolean end = false;
 		
 		this.console.presentation();
+		this.console.printMessage("What's your name ?");
+		String playerName = this.console.readCommand();
+		this.player = new Player(playerName, 100);
 		
-		while(currentLevel-1 < dungeons.size() && !this.end) {
-			this.console.printMessage("Level " + currentLevel + " begin!");
+		while(currentLevel < dungeons.size() && !end) {
+			this.console.printMessage("Level " + (currentLevel+1) + " begin!");
 			
-			if(this.runLevel(currentLevel-1)) {
-				this.console.printMessage("Congratulations, you have finished the level " + currentLevel + " !");
+			if(this.runLevel(currentLevel)) {
+				this.console.printMessage("Congratulations, you have finished the level " + (currentLevel+1) + " !");
 				currentLevel++;
 			}
 			else {
-				this.end = true;
+				end = true;
 			}
 		}
 		
-		if(!this.end) {
+		if(!end) {
 			this.console.printMessage("Congratulations " + this.player.getName() + ", you win !");
 		}
 		else {
@@ -60,11 +60,15 @@ public class Game {
 	 */
 	private boolean runLevel(int level) {
 		Dungeon dungeon = dungeons.get(level);
+		this.console.printMessage(dungeon.startDungeon(this.player));
 		
 		while(!dungeon.gameIsFinished()) {
+			this.console.printMessage(this.player.toString());
+			this.console.printMessage("What do you want to do now ?");
 			String command = this.console.readCommand();
 			String response = dungeon.interpretCommand(command);
 			this.console.printMessage(response);
+			this.console.printMessage("------------------------");
 		}
 		
 		return dungeon.gameIsWon();

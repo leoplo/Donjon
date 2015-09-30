@@ -7,17 +7,14 @@ import dungeon.item.*;
 import dungeon.room.*;
 import dungeon.room.exit.Exit;
 import dungeon.unit.*;
-import dungeon.util.ConsoleInterface;
 
 public class GameMain {
 	
 	public static void main(String[] args) {
-		ConsoleInterface console = new ConsoleInterface();
-		Player player = new Player(console.readCommand(), 100);
 		List<Dungeon> dungeons = new ArrayList<Dungeon>();
-		dungeons.add(new Dungeon(initializeLevel1(), player));
+		dungeons.add(new Dungeon(initializeLevel1()));
 		
-		Game game = new Game(player, dungeons);
+		Game game = new Game(dungeons);
 		game.run();
 	}
 	

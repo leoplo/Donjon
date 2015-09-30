@@ -15,11 +15,14 @@ public class ConsoleInterface {
 		System.out.println(message);
 	}
 	
+	/**
+	 * Read command on the standard input
+	 * @return the string command
+	 */
 	public String readCommand() {
 		String command = "";
 		
 		do {
-			this.printMessage("What do you want to do now ?");
 			System.out.print("> ");
 			command = Input.readString().trim();
 		} while (command.equals(""));
