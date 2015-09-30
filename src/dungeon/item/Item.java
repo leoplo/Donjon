@@ -20,9 +20,5 @@ public abstract class Item {
 	 */
 	public abstract void itemAction(Player player);
 	
-	/**
-	 * Return a description of the Item in order to be printed.
-	 * @return a string made of the description of this Item.
-	 */
 	public abstract String getDescription();
 }

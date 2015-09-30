@@ -15,10 +15,6 @@ public class Key extends Item {
 		player.pickKey(this);
 	}
 	
-	/**
-	 * Return a description of the Item in order to be printed.
-	 * @return a string "Unlock an exit"
-	 */
 	public String getDescription() {
 		return "Unlock an exit";
 	}

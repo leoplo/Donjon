@@ -6,7 +6,7 @@ import dungeon.unit.Player;
 import dungeon.util.ConsoleInterface;
 
 /**
- * the class <code>Game</code> represent the all game, it contains a player and a list of dungeon (which are a kind of levels). 
+ * the class {@code Game} represent the all game, it contains a player and a list of dungeon (which are a kind of levels). 
  *
  */
 public class Game {

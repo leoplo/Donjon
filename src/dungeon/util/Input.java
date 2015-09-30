@@ -2,6 +2,8 @@ package dungeon.util;
 
 import java.util.Scanner;
 
+/** the class {@code Input} contains all the function that can read inputs of the player.
+ */
 public class Input {
 	private static Scanner scanner = new Scanner(System.in);
 
@@ -18,7 +20,7 @@ public class Input {
 	 * read an integer from standard input
    	 * 
 	 * @return the read integer
-	 * @exception java.io.IOException if input does not correspond to an integer
+	 * @throws java.io.IOException if input does not correspond to an integer
 	 */
 	public static int readInt() throws java.io.IOException {
 		try {

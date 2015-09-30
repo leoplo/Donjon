@@ -10,10 +10,14 @@ public class Potion extends Item {
 		this.healthPointsRestored = healthPoints;
 	}
 	
+	/**
+	 * Heal the player.
+	 * @param player the player who is healed.
+	 */
 	public void itemAction(Player player) {
 		player.heal(this.healthPointsRestored);
 	}
-	
+
 	public String getDescription() {
 		return "Restores " + this.healthPointsRestored + " health points.";
 	}

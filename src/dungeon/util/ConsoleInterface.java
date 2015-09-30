@@ -1,5 +1,7 @@
 package dungeon.util;
 
+/** the class {@code ConsoleInterface} contains all the methods that can print in a console.
+ */
 public class ConsoleInterface {
 	
 	public void presentation() {

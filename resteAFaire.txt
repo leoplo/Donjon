@@ -5,7 +5,7 @@ Room
 	  -> getDirection : paramètre pour sortie cachées ou visibles 
 
 ConsoleInterface -> readCommand : deplacer "what do you want to do now"
-
-
+					
+					
 
 				-------- TEST !!!! --------
