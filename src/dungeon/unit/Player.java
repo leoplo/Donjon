@@ -10,7 +10,7 @@ public class Player extends Unit {
 	
 	public Player (String name, int healthPoints) {
 		super(name, healthPoints);
-		this.currentWeapon = new Weapon("Feeble Sword", 10, 50);
+		this.currentWeapon = new Weapon("Feeble Sword", 10);
 		this.keys = new ArrayList<Key>();
 	}
 	
@@ -28,7 +28,7 @@ public class Player extends Unit {
 			this.currentWeapon = newWeapon;
 		}
 	}
-
+	
 	public boolean hasKey(Key keyRequired){
 		return this.keys.contains(keyRequired);
 	}

@@ -1,11 +1,11 @@
-package dungeon.combat;
+package dungeon.fight;
 
 import dungeon.unit.Unit;
 
-public class Combat {
+public class Fight {
 	protected Unit fighter1, fighter2;
 	
-	public Combat(Unit fighter1, Unit fighter2) {
+	public Fight(Unit fighter1, Unit fighter2) {
 		this.fighter1 = fighter1;
 		this.fighter2 = fighter2;
 		this.startFight();

@@ -1,5 +1,7 @@
 package dungeon.room;
 
+/** the class {@code ExitRoom}, when the player enter in a {@code ExitRoom} he win the game. 
+ */
 public class ExitRoom extends Room {
 	public ExitRoom(){
 		super();

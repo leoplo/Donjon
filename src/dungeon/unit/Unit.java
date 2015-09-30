@@ -1,5 +1,7 @@
 package dungeon.unit;
 
+/** the class {@code Unit} is a super-class for all entities of the game like monsters and players.
+ */
 public abstract class Unit {
 	protected String name;
 	protected int currentHealthPoints;
@@ -17,10 +19,6 @@ public abstract class Unit {
 	
 	public boolean isAlive() {
 		return !this.isDead();
-	}
-	
-	public void resurrect() {
-		this.currentHealthPoints = this.maxHealthPoints;
 	}
 	
 	public String getName() {

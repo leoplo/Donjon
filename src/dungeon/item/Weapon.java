@@ -4,16 +4,16 @@ import dungeon.unit.Player;
 
 public class Weapon extends Item {
 	protected int damage;
-	protected int maxDurability;
-	protected int currentDurability;
 	
-	public Weapon(String name, int damage, int durability) {
+	public Weapon(String name, int damage) {
 		super(name);
 		this.damage = damage;
-		this.currentDurability = durability;
-		this.maxDurability = durability;
 	}
 	
+	/**
+	 * Switch the weapon found if it's better than the current weapon.
+	 * @param player the player who found the weapon
+	 */
 	public void itemAction(Player player) {
 		player.switchWeapon(this);
 	}
@@ -26,11 +26,7 @@ public class Weapon extends Item {
 		return weapon.damage > this.damage;
 	}
 	
-	public void repare() {
-		this.currentDurability = this.maxDurability;
-	}
-	
 	public String getDescription() {
-			return "Whenever you hit an opponent with it, you deal " + this.damage + " damage.";
+			return "Whenever you'll hit an opponent with it, you'll deal " + this.damage + " damage.";
 	}
 }

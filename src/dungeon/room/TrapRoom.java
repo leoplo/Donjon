@@ -1,5 +1,7 @@
 package dungeon.room;
 
+/** the class {@code TrapRoom}, when the player enter in a {@code TrapRoom} he loose the game. 
+ */
 public class TrapRoom extends Room {
 	public TrapRoom() {
 		super();

@@ -1,5 +1,7 @@
 package dungeon.room.exit;
 
+/** the class {@code Exit} represents the different exits associated to a direction.
+ */
 public class Exit {
 	protected boolean isHidden;
 	protected boolean isLocked;
