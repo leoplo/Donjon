@@ -7,5 +7,11 @@ Room
 ConsoleInterface -> readCommand : deplacer "what do you want to do now"
 
 
+Unit -> Interet de "resurect()" (non utilisée)
+
+				----- Weapon et ArmoryRoom-----
+					pas facile a gerer pour le temps qu'il nous reste. (travail d'abord sur d'atres choses avant ca. test et documentation prioritaire !)
+					
+					
 
 				-------- TEST !!!! --------
