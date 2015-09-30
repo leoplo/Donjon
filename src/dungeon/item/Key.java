@@ -7,12 +7,18 @@ public class Key extends Item {
 		super(name);
 	}
 
-	@Override
-	public void use(Player player) {
+	/**
+	 * Pick the key.
+	 * @param player the player who pick this key.
+	 */
+	public void itemAction(Player player) {
 		player.pickKey(this);
 	}
 	
-	@Override
+	/**
+	 * Return a description of the Item in order to be printed.
+	 * @return a string "Unlock an exit"
+	 */
 	public String getDescription() {
 		return "Unlock an exit";
 	}

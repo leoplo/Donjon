@@ -14,8 +14,7 @@ public class Weapon extends Item {
 		this.maxDurability = durability;
 	}
 	
-	@Override
-	public void use(Player player) {
+	public void itemAction(Player player) {
 		player.switchWeapon(this);
 	}
 	
@@ -31,7 +30,6 @@ public class Weapon extends Item {
 		this.currentDurability = this.maxDurability;
 	}
 	
-	@Override
 	public String getDescription() {
 			return "Whenever you hit an opponent with it, you deal " + this.damage + " damage.";
 	}

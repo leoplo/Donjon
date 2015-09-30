@@ -14,7 +14,15 @@ public abstract class Item {
 		return this.name;
 	}
 	
-	public abstract void use(Player player);
+	/**
+	 * Does the action related to this item.
+	 * @param player the player who triggered the action.
+	 */
+	public abstract void itemAction(Player player);
 	
+	/**
+	 * Return a description of the Item in order to be printed.
+	 * @return a string made of the description of this Item.
+	 */
 	public abstract String getDescription();
 }

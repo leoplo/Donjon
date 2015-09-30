@@ -7,7 +7,7 @@ import dungeon.room.exit.Exit;
 import dungeon.unit.*;
 
 /**
- * The class <code>Dungeon</code> represents a dungeon game containing Rooms.
+ * The class <code>Dungeon</code> represents a dungeon game containing Rooms and a Player.
  */
 
 public class Dungeon {
@@ -48,7 +48,14 @@ public class Dungeon {
 		return result;
 	}
 	
-	
+	/**
+	 * Changes the room and go to the direction 
+	 * @param direction the direction where the player will go
+	 * @return a string to be print with the answer :
+	 * 			"No direction associated." if the direction is not available.
+	 * 			the exit's message if the exit is locked.
+	 * 			the new room's message if the player changes room.
+	 */
 	public String changingRoom(String direction) {
 		Room nextRoom = this.currentRoom.getRoom(direction);
 		if (nextRoom == null) {
@@ -76,6 +83,7 @@ public class Dungeon {
 	
 	/**
 	 * Give all directions you can choose
+	 * @return a string made of all possible directions.
 	 */
 	public String movementsPossibilities(){
 	    Set<String> directions = this.currentRoom.getDirections();

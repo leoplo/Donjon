@@ -24,17 +24,4 @@ public class ConsoleInterface {
 		
 		return command;
 	}
-	
-	public String readName() {
-		this.printMessage("Please choose your name :");
-		
-		String name = "";
-		
-		do {
-			System.out.print("> ");
-			name = Input.readString().trim();
-		} while (name.equals(""));
-		
-		return name;
-	}
 }

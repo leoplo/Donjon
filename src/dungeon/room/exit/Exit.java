@@ -1,12 +1,12 @@
 package dungeon.room.exit;
 
 public class Exit {
-	protected boolean hidden;
-	protected boolean locked;
+	protected boolean isHidden;
+	protected boolean isLocked;
 	
 	public Exit(boolean hidden){
-		this.hidden = hidden;
-		this.locked = false;
+		this.isHidden = hidden;
+		this.isLocked = false;
 	}
 	
 	public Exit() {
@@ -14,11 +14,11 @@ public class Exit {
 	}
 	
 	public boolean isOpen() {
-		return !this.locked;
+		return !this.isLocked;
 	}
 	
 	public boolean isHidden(){
-		return this.hidden;
+		return this.isHidden;
 	}
 	
 	public String getMessage () {

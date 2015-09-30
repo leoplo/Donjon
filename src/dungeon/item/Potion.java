@@ -10,12 +10,11 @@ public class Potion extends Item {
 		this.healthPointsRestored = healthPoints;
 	}
 	
-	@Override
-	public void use(Player player) {
+	public void itemAction(Player player) {
 		player.heal(this.healthPointsRestored);
 	}
 	
 	public String getDescription() {
-		return "Restores " + this.healthPointsRestored + " health.";
+		return "Restores " + this.healthPointsRestored + " health points.";
 	}
 }

@@ -5,7 +5,7 @@ import dungeon.unit.Player;
 public abstract class LockedExit extends Exit {
 
 	public boolean unlock(Player player){
-		this.locked = false;
+		this.isLocked = false;
 		return true;
 	}
 	
