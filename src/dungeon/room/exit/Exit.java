@@ -4,11 +4,9 @@ package dungeon.room.exit;
  */
 public class Exit {
 	protected boolean isHidden;
-	protected boolean isLocked;
 	
 	public Exit(boolean isHidden){
 		this.isHidden = isHidden;
-		this.isLocked = false;
 	}
 	
 	public Exit() {
@@ -16,7 +14,7 @@ public class Exit {
 	}
 	
 	public boolean isOpen() {
-		return !this.isLocked;
+		return true;
 	}
 	
 	public boolean isHidden(){

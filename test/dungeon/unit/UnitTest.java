@@ -12,7 +12,7 @@ public abstract class UnitTest {
 	public abstract Unit createUnit (String name, int healthPoints);
 	
 	@Test
-	public void attackAndResurrectTest () {
+	public void attackTest () {
 		Unit unit1 = this.createUnit("unit1", 20);
 		Unit unit2 = this.createUnit("unit2", 30);
 		unit1.attack(unit2);
@@ -25,9 +25,6 @@ public abstract class UnitTest {
 		assertFalse(unit2.isAlive());
 		assertFalse(unit1.isDead());
 		assertTrue(unit2.isDead());
-		unit2.resurrect();
-		assertTrue(unit2.isAlive());
-		assertFalse(unit2.isDead());
 	}
 	
 	@Test

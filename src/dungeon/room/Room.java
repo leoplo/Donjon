@@ -67,8 +67,15 @@ public class Room {
 		return "You entered in a " + ((!this.visited) ? "new " : "") + "room.";
 	}
 	
-	public Set<String> getDirections(){
-	    return this.neighbours.keySet();
+	public Set<String> getDirections(boolean seeHiddenExits){
+		 Set<String> allDirections = this.neighbours.keySet();
+		 Set<String> directionsReturn = new TreeSet<String>();
+		 for (String direction : allDirections) {
+			if (exits.get(direction).isHidden() == seeHiddenExits) {
+				directionsReturn.add(direction);
+			}
+		 }
+		 return directionsReturn;
 	}
 	
 	/**

@@ -21,9 +21,7 @@ public abstract class Unit {
 		return !this.isDead();
 	}
 	
-	public void resurrect() {
-		this.currentHealthPoints = this.maxHealthPoints;
-	}
+	
 	
 	public String getName() {
 		return this.name;

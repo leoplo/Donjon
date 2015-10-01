@@ -22,9 +22,7 @@ public class Dungeon {
 	
 	public String startDungeon(Player player) {
 		this.player = player;
-		String message = this.currentRoom.getMessage();
-		this.currentRoom.roomAction(this.player);
-		return message;
+		return this.doActionRoomAndGetMessage();
 	}
 	
 	public Room getCurrentRoom() {
@@ -51,11 +49,12 @@ public class Dungeon {
 				message = (!remainder.isEmpty()) ? this.changingRoom(remainder) : "Where ?";
 				break;
 			case "infos":
-				message = this.movementsPossibilities();
+				message = this.movementsPossibilities(true);
 				break;
 			case "quit":
-				message = "Good Bye!";
+				message = "You give up !";
 				this.userGiveUp = true;
+				break;
 			default:
 				message = "I don't know what you mean.";
 		}
@@ -83,13 +82,19 @@ public class Dungeon {
 		}
 		
 		this.currentRoom = nextRoom;
-		String result = this.currentRoom.getMessage();
-		result += this.currentRoom.roomAction(player);
-		return result;
+		return this.doActionRoomAndGetMessage();
+	}
+
+	public String doActionRoomAndGetMessage() {
+		String message = this.currentRoom.getMessage();
+		message += this.currentRoom.roomAction(player);
+		if(player.isAlive())
+			message += this.movementsPossibilities(false);
+		return message;
 	}
 	
 	public boolean gameIsFinished() {
-		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom() || this.userGiveUp;
+		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom() || this.player.isDead() ||this.userGiveUp;
 	}
 	
 	public boolean gameIsWon() {
@@ -100,8 +105,8 @@ public class Dungeon {
 	 * Give all directions you can choose
 	 * @return a string made of all possible directions.
 	 */
-	public String movementsPossibilities(){
-	    Set<String> directions = this.currentRoom.getDirections();
+	public String movementsPossibilities(boolean seeHiddenExits){
+	    Set<String> directions = this.currentRoom.getDirections(seeHiddenExits);
 	    String message = "";
 	    
 	    for (String direction : directions) {
@@ -109,6 +114,6 @@ public class Dungeon {
 	    		message += "-" +  direction + "\n";
 	    }
 	    
-	    return("All directions you can choose:\n" + message);
+	    return("All directions you can choose :\n" + message);
 	}
 }
