@@ -33,7 +33,7 @@ public class Dungeon {
 	/**
 	 * Interprets the user's command and executes it
 	 * @param command the user's command
-	 * @return result of the interpretation of the command
+	 * @return the command interpretation
 	 */
 	public String interpretCommand(String command) {
 		if(command.isEmpty()) {
@@ -113,7 +113,9 @@ public class Dungeon {
 	    	if(this.currentRoom.getRoom(direction) != null)
 	    		message += "-" +  direction + "\n";
 	    }
+	    if (message.isEmpty())
+	    	message = "No direction to display.";
 	    
-	    return("All directions you can choose :\n" + message);
+	    return("All " + (seeHiddenExits ? "hiddens" : "visibles") + " directions you can choose :\n" + message);
 	}
 }

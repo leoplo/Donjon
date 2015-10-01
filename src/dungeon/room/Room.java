@@ -64,7 +64,7 @@ public class Room {
 	}
 	
 	public String getMessage() {
-		return "You entered in a " + ((!this.visited) ? "new " : "") + "room.";
+		return "You entered in a " + ((!this.visited) ? "new " : "") + "room.\n";
 	}
 	
 	public Set<String> getDirections(boolean seeHiddenExits){

@@ -83,12 +83,13 @@ public class RoomTest {
 		room.addRoom("south", room2, exit2);
 		room.addRoom("west", room3, exit3);
 		room.addRoom("east", room4, exit4);
-		Set<String> directions = room.getDirections();
+		Set<String> directions = room.getDirections(false);
 		Set<String> directionsExpected = new TreeSet<String>();
 		directionsExpected.add("north");
-		directionsExpected.add("south");
-		directionsExpected.add("west");
 		directionsExpected.add("east");
 		assertEquals(directionsExpected, directions);
+		
+		directionsExpected.add("south");
+		directionsExpected.add("west");
 	}
 }
