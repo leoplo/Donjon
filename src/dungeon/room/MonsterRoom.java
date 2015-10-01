@@ -19,15 +19,15 @@ public class MonsterRoom extends Room {
 	 * @param player the player who entered in this room and triggered the action.
 	 */
 	public String roomAction(Player player){
-		String result = super.roomAction(player);
+		String message = super.roomAction(player);
 		
 		if (this.monster.isAlive()) {
-			result += "A fight begin between " + this.monster.getName() + " and you.\n";
+			message += "A fight begin between " + this.monster.getName() + " and you.\n";
 			this.combat = new Fight(monster, player);
-			result += "The winner is " + this.combat.getWinner().getName();
+			message += "The winner is " + this.combat.getWinner().getName();
 		}
 		
-		return result;
+		return message;
 	}
 	
 	public String getMessage(){

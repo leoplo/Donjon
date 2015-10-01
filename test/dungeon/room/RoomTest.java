@@ -19,7 +19,7 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void getRoomAndGetExitTest() {
+	public void addRoomGetRoomAndGetExitTest() {
 		Room room = this.createRoom();
 		Room room1 = this.createRoom();
 		Room room2 = this.createRoom();

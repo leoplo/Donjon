@@ -4,6 +4,7 @@ import java.util.Set;
 
 import dungeon.room.*;
 import dungeon.room.exit.Exit;
+import dungeon.room.exit.LockedExit;
 import dungeon.unit.*;
 
 /**
@@ -72,23 +73,27 @@ public class Dungeon {
 	 */
 	public String changingRoom(String direction) {
 		Room nextRoom = this.currentRoom.getRoom(direction);
+		String message = "";
 		if (nextRoom == null) {
 			return "No direction associated.";
 		}
 		
 		Exit exit = this.currentRoom.getExit(direction);
 		if (!exit.isOpen()) {
-			return exit.getMessage();
+			if (((LockedExit) exit).unlock(player))
+				message = "You unlock this exit !\n";
+			else
+				message = exit.getMessage();
 		}
-		
 		this.currentRoom = nextRoom;
-		return this.doActionRoomAndGetMessage();
+		message += this.doActionRoomAndGetMessage();
+		return message;
 	}
 
 	public String doActionRoomAndGetMessage() {
 		String message = this.currentRoom.getMessage();
 		message += this.currentRoom.roomAction(player);
-		if(player.isAlive())
+		if(player.isAlive() && !this.gameIsFinished())
 			message += this.movementsPossibilities(false);
 		return message;
 	}

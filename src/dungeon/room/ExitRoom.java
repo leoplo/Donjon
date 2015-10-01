@@ -9,6 +9,6 @@ public class ExitRoom extends Room {
 	}
 	
 	public String getMessage(){
-		return "You escape this dungeon !";
+		return "You escape this dungeon !\n";
 	}
 }
