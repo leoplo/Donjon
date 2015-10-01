@@ -29,6 +29,10 @@ public abstract class Unit {
 		return this.name;
 	}
 	
+	public int getCurrentHealthPoints(){
+		return this.currentHealthPoints;
+	}
+	
 	public abstract void attack(Unit opponent);
 	
 	public String toString() {

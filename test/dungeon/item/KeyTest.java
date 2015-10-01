@@ -8,6 +8,7 @@ import dungeon.unit.Player;
 
 public class KeyTest extends ItemTest{
 
+	//la méthode createItem ne sert à rien
 	public Key createKey(String name){
 		return createItem(name);
 	}
