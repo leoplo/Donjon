@@ -19,6 +19,14 @@ public class Game {
 		this.console = new ConsoleInterface();
 	}
 	
+	public String presentation() {
+		return "During this game, you have to choose a direction to change room.\n" +
+				"Exemple, if you want to go in the west room, write : 'go west'\n" +
+				"To see the hidden directions and be informated about the player health, write : 'infos'\n" +
+				"If you want to leave the game, write : 'quit'\n" +
+				"Good luck!";
+	}
+	
 	/**
 	 * This method start the game, it includes a game presentation. 
 	 * After the presentation the game starts and the hand is given to the player.
@@ -27,7 +35,7 @@ public class Game {
 		int currentLevel = 0;
 		boolean end = false;
 		
-		this.console.presentation();
+		this.console.printMessage(this.presentation());
 		this.console.printMessage("What's your name ?");
 		String playerName = this.console.readCommand();
 		this.player = new Player(playerName, 100);
