@@ -23,7 +23,7 @@ public class Weapon extends Item {
 	}
 	
 	public boolean isBetterThan(Weapon weapon) {
-		return weapon.damage > this.damage;
+		return this.damage > weapon.damage;
 	}
 	
 	public String getDescription() {

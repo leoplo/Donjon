@@ -15,14 +15,6 @@ public class ExitLockedByKeyTest extends LockedExitTest {
 	}
 	
 	@Test
-	public void isOpenTest () {
-		ExitLockedByKey exit1 = (ExitLockedByKey) this.createExit(true);
-		ExitLockedByKey exit2 = (ExitLockedByKey) this.createExit(false);
-		assertFalse(exit1.isOpen());
-		assertFalse(exit2.isOpen());
-	}
-	
-	@Test
 	public void unlockTest () {
 		ExitLockedByKey exit = (ExitLockedByKey) this.createExit(false);
 		Player player = new Player("player", 30);
