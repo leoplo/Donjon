@@ -6,7 +6,9 @@ import org.junit.Test;
 
 public abstract class UnitTest {
 	
-	/* the attack's power must be 10 */
+	/** 
+	 * the attack's power must be 10 
+	 */
 	public abstract Unit createUnit (String name, int healthPoints);
 	
 	@Test
