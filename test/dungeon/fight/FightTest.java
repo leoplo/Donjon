@@ -1,11 +1,14 @@
 package dungeon.fight;
 
 import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 import dungeon.unit.*;
 
 public class FightTest {
 	
-	
+	@Test
 	public void fightWonByPlayerTest() {
 		Player player = new Player("player", 30);
 		Monster monster = new Monster("monster", 27, 9);
@@ -13,6 +16,7 @@ public class FightTest {
 		assertSame(fight.getWinner(), player);
 	}
 	
+	@Test
 	public void fightWonByMonsterTest() {
 		Player player = new Player("player", 30);
 		Monster monster = new Monster("monster", 31, 11);
