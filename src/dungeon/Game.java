@@ -19,7 +19,7 @@ public class Game {
 		this.console = new ConsoleInterface();
 	}
 	
-	public static String presentation() {
+	private String presentation() {
 		return "During this game, you have to choose a direction to change room.\n" +
 				"Exemple, if you want to go in the west room, write : 'go west'\n" +
 				"To see the hidden directions and be informated about the player health, write : 'infos'\n" +
@@ -35,7 +35,7 @@ public class Game {
 		int currentLevel = 0;
 		boolean end = false;
 		
-		this.console.printMessage(Game.presentation());
+		this.console.printMessage(this.presentation());
 		this.console.printMessage("What's your name ?");
 		String playerName = this.console.readCommand();
 		this.player = new Player(playerName, 100);
