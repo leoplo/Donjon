@@ -15,9 +15,15 @@ public class Dungeon {
 	protected Player player;
 	protected Room currentRoom;
 	
-	public Dungeon (Room startingRoom, Player player) {
+	public Dungeon (Room startingRoom) {
 		this.currentRoom = startingRoom;
+	}
+	
+	public String startDungeon(Player player) {
 		this.player = player;
+		String message = this.currentRoom.getMessage();
+		this.currentRoom.roomAction(this.player);
+		return message;
 	}
 	
 	public Room getCurrentRoom() {
@@ -28,21 +34,26 @@ public class Dungeon {
 	/**
 	 * Interprets the user's command and executes it
 	 * @param command the user's command
-	 * @return result
+	 * @return result of the interpretation of the command
 	 */
 	public String interpretCommand(String command) {
+		if(command.isEmpty()) {
+			return "Say somethings !";
+		}
+		
 		String[] parameters = command.trim().split("\\s+");
+		String remainder = command.substring(parameters[0].length()).trim();
 		String result;
 		
 		switch(parameters[0]) {
 			case "go":
-				result = (parameters.length >= 2) ? this.changingRoom(parameters[1]) : "Where?";
+				result = (!remainder.isEmpty()) ? this.changingRoom(remainder) : "Where ?";
 				break;
 			case "infos":
 				result = this.movementsPossibilities();
 				break;
 			default:
-				result = "I don't know what you mean";
+				result = "I don't know what you mean.";
 		}
 		
 		return result;
@@ -69,7 +80,7 @@ public class Dungeon {
 		
 		this.currentRoom = nextRoom;
 		String result = this.currentRoom.getMessage();
-		this.currentRoom.roomAction(player);
+		result += this.currentRoom.roomAction(player);
 		return result;
 	}
 	

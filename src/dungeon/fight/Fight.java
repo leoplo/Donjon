@@ -13,7 +13,7 @@ public class Fight {
 	
 	/**
 	 * This method run the fight between two opponents.
-	 * By convention, this.fighter1 is the first to attack.
+	 * By convention, fighter1 is the first to attack.
 	 */
 	protected void startFight() {
 		while(this.fighter1.isAlive() && this.fighter2.isAlive()) {

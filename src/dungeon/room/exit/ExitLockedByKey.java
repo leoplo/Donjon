@@ -6,8 +6,8 @@ import dungeon.unit.Player;
 public class ExitLockedByKey extends LockedExit {
 	protected Key associatedKey;
 	
-	public ExitLockedByKey(Key associatedKey) {
-		super();
+	public ExitLockedByKey(boolean isHidden, Key associatedKey) {
+		super(isHidden);
 		this.associatedKey = associatedKey;
 	}
 	

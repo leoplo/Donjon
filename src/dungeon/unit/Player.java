@@ -36,8 +36,4 @@ public class Player extends Unit {
 	public void pickKey(Key foundKey) {
 		this.keys.add(foundKey);
 	}
-	
-	public Weapon getWeapon() {
-		return this.currentWeapon;
-	}
 }

@@ -18,12 +18,16 @@ public class MonsterRoom extends Room {
 	 * Start a Fight with the monster. When the player enter a room he pick all items in this room and triggered {@link dungeon.item#itemAction(Player player) itemAction} method.
 	 * @param player the player who entered in this room and triggered the action.
 	 */
-	public void roomAction(Player player){
-		super.roomAction(player);
+	public String roomAction(Player player){
+		String result = super.roomAction(player);
 		
 		if (this.monster.isAlive()) {
+			result += "A fight begin between " + this.monster.getName() + " and you.\n";
 			this.combat = new Fight(monster, player);
+			result += "The winner is " + this.combat.getWinner().getName();
 		}
+		
+		return result;
 	}
 	
 	public String getMessage(){

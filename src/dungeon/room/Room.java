@@ -25,6 +25,7 @@ public class Room {
 		this.losingRoom = false;
 		this.winningRoom = false;
 	}
+	
 	/**
 	 * Add a room this room neighbours.
 	 * @param direction the direction of the new neighbour.
@@ -74,14 +75,18 @@ public class Room {
 	 * Does the room action. When the player enter a room he pick all items in this room and triggered {@link dungeon.item#itemAction(Player player) itemAction} method.
 	 * @param player the player who entered in this room and triggered the action.
 	 */
-	public void roomAction(Player player){
+	public String roomAction(Player player) {
+		String message = "";
 		if(!this.visited) {
 			this.visited = true;
 			
 			for(Item i : this.itemsInTheRoom) {
+				message += "You loot " + i.getName() + "(Description : " + i.getDescription() + ")\n";
 				i.itemAction(player);
 			}
 		}
+		
+		return message;
 	}
 	
 	public void addItemInTheRoom(Item itemToAdd) {
