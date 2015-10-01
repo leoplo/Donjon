@@ -19,6 +19,11 @@ public class ExitLockedByKey extends LockedExit {
 	}
 	
 	public String getMessage () {
-		return super.getMessage() + ", you need " + this.associatedKey.getName() +" to unlock this exit.\n";
+		if(this.isLocked) {
+			return super.getMessage() + ", you need " + this.associatedKey.getName() +" to unlock this exit.\n";
+		}
+		else {
+			return "You unlock this exit with " + this.associatedKey.getName() + "!\n";
+		}
 	}
 }

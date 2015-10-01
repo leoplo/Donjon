@@ -88,7 +88,7 @@ public class Room {
 			this.visited = true;
 			
 			for(Item i : this.itemsInTheRoom) {
-				message += "You loot " + i.getName() + "(Description : " + i.getDescription() + ")\n";
+				message += "You loot " + i.getName() + " (Description : " + i.getDescription() + ")\n";
 				i.itemAction(player);
 			}
 		}

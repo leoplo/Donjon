@@ -21,6 +21,11 @@ public class Dungeon {
 		this.currentRoom = startingRoom;
 	}
 	
+	/**
+	 * initialize the player in the dungeon
+	 * @param player to add in the dungeon
+	 * @return a string to be print with the answer of the first room
+	 */
 	public String startDungeon(Player player) {
 		this.player = player;
 		return this.doActionRoomAndGetMessage();
@@ -73,20 +78,23 @@ public class Dungeon {
 	 */
 	public String changingRoom(String direction) {
 		Room nextRoom = this.currentRoom.getRoom(direction);
-		String message = "";
+		
 		if (nextRoom == null) {
 			return "No direction associated.";
 		}
 		
+		String message = "";
+		boolean exitUnlock = true;
 		Exit exit = this.currentRoom.getExit(direction);
 		if (!exit.isOpen()) {
-			if (((LockedExit) exit).unlock(player))
-				message = "You unlock this exit !\n";
-			else
-				message = exit.getMessage();
+			exitUnlock = ((LockedExit) exit).unlock(player);
+			message = exit.getMessage();
 		}
-		this.currentRoom = nextRoom;
-		message += this.doActionRoomAndGetMessage();
+		
+		if(exitUnlock) {
+			this.currentRoom = nextRoom;
+			message += this.doActionRoomAndGetMessage();
+		}
 		return message;
 	}
 

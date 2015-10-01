@@ -22,9 +22,9 @@ public class MonsterRoom extends Room {
 		String message = super.roomAction(player);
 		
 		if (this.monster.isAlive()) {
-			message += "A fight begin between " + this.monster.getName() + " and you.\n";
+			message += " A fight begin between " + this.monster.getName() + " and you.\n";
 			this.combat = new Fight(monster, player);
-			message += "The winner is " + this.combat.getWinner().getName();
+			message += "The winner is " + this.combat.getWinner().getName() + "\n";
 		}
 		
 		return message;
@@ -34,6 +34,6 @@ public class MonsterRoom extends Room {
 		if(this.monster.isDead())
 			return super.getMessage();
 		
-		return super.getMessage() + " A monster (" + this.monster.getName() + ") is standing right here in front of you.";
+		return super.getMessage() + "A monster (" + this.monster.getName() + ") is standing right here in front of you.";
 	}
 }
