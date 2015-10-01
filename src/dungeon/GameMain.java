@@ -21,7 +21,7 @@ public class GameMain {
 	public static Room initializeLevel1() {
 		Room entryRoom = new Room();
 		Room room1 = new Room();
-		Room roomWithMonster = new MonsterRoom(new Monster("Orc", 20, 6));
+		Room roomWithMonster = new MonsterRoom(new Monster("Orc", 200, 600));
 		Room roomWithPotion = new Room();
 		roomWithPotion.addItemInTheRoom(new Potion("Healing Potion", 10));
 		Room exitRoom = new ExitRoom();
