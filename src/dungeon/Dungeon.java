@@ -14,6 +14,7 @@ public class Dungeon {
 	
 	protected Player player;
 	protected Room currentRoom;
+	protected boolean userGiveUp = false;
 	
 	public Dungeon (Room startingRoom) {
 		this.currentRoom = startingRoom;
@@ -42,21 +43,24 @@ public class Dungeon {
 		}
 		
 		String[] parameters = command.trim().split("\\s+");
-		String remainder = command.substring(parameters[0].length()).trim();
-		String result;
+		String message;
 		
 		switch(parameters[0]) {
 			case "go":
-				result = (!remainder.isEmpty()) ? this.changingRoom(remainder) : "Where ?";
+				String remainder = command.substring(parameters[0].length()).trim();
+				message = (!remainder.isEmpty()) ? this.changingRoom(remainder) : "Where ?";
 				break;
 			case "infos":
-				result = this.movementsPossibilities();
+				message = this.movementsPossibilities();
 				break;
+			case "quit":
+				message = "Good Bye!";
+				this.userGiveUp = true;
 			default:
-				result = "I don't know what you mean.";
+				message = "I don't know what you mean.";
 		}
 		
-		return result;
+		return message;
 	}
 	
 	/**
@@ -85,7 +89,7 @@ public class Dungeon {
 	}
 	
 	public boolean gameIsFinished() {
-		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom();
+		return  this.currentRoom.isWinningRoom() || this.currentRoom.isLosingRoom() || this.userGiveUp;
 	}
 	
 	public boolean gameIsWon() {
