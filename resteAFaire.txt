@@ -3,9 +3,10 @@ items -> revoir equals (sur String)
 		-> return chaine de caractere itemAction() pour class room -> affichage des items utilisés (roomAction()) 
 Room 
 	  -> getDirection : paramètre pour sortie cachées ou visibles 
-
-ConsoleInterface -> readCommand : deplacer "what do you want to do now"
 					
 					
 
 				-------- TEST !!!! --------
+				Dungeon
+				Game
+				Room
