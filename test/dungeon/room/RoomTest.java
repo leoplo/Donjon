@@ -20,11 +20,11 @@ public class RoomTest {
 	
 	@Test
 	public void getRoomAndGetExitTest () {
-		Room room = createRoom();
-		Room room1 = createRoom();
-		Room room2 = createRoom();
-		Room room3 = createRoom();
-		Room room4 = createRoom();
+		Room room = this.createRoom();
+		Room room1 = this.createRoom();
+		Room room2 = this.createRoom();
+		Room room3 = this.createRoom();
+		Room room4 = this.createRoom();
 		Exit exit1 = new Exit();
 		Exit exit2 = new Exit(true);
 		Exit exit3 = new Exit(true);
@@ -47,19 +47,19 @@ public class RoomTest {
 	
 	@Test
 	public void isWinningRoomTest () {
-		Room room = createRoom();
+		Room room = this.createRoom();
 		assertFalse(room.isWinningRoom());
 	}
 	
 	@Test
 	public void isLosingRoomTest () {
-		Room room = createRoom();
+		Room room = this.createRoom();
 		assertFalse(room.isLosingRoom());
 	}
 	
 	@Test
 	public void addItemInTheRoomAndRoomActionTest () {
-		Room room = createRoom();
+		Room room = this.createRoom();
 		Player player = new Player("player", 100);
 		Key key = new Key("key");
 		assertFalse(player.hasKey(key));
@@ -70,11 +70,11 @@ public class RoomTest {
 	
 	@Test
 	public void getDirectionsTest () {
-		Room room = createRoom();
-		Room room1 = createRoom();
-		Room room2 = createRoom();
-		Room room3 = createRoom();
-		Room room4 = createRoom();
+		Room room = this.createRoom();
+		Room room1 = this.createRoom();
+		Room room2 = this.createRoom();
+		Room room3 = this.createRoom();
+		Room room4 = this.createRoom();
 		Exit exit1 = new Exit();
 		Exit exit2 = new Exit(true);
 		Exit exit3 = new Exit(true);

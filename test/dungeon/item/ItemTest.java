@@ -10,7 +10,7 @@ public abstract class ItemTest {
 	
 	@Test
 	public void getNameTest () {
-		Item item = createItem("item");
+		Item item = this.createItem("item");
 		assertEquals("item", item.getName());
 	}
 	

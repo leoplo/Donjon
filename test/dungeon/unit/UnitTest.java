@@ -11,8 +11,8 @@ public abstract class UnitTest {
 	
 	@Test
 	public void attackAndResurrectTest () {
-		Unit unit1 = createUnit("unit1", 20);
-		Unit unit2 = createUnit("unit2", 30);
+		Unit unit1 = this.createUnit("unit1", 20);
+		Unit unit2 = this.createUnit("unit2", 30);
 		unit1.attack(unit2);
 		assertTrue(unit1.isAlive());
 		assertTrue(unit2.isAlive());
@@ -30,14 +30,14 @@ public abstract class UnitTest {
 	
 	@Test
 	public void getNameTest () {
-		Unit unit = createUnit("unit", 30);
+		Unit unit = this.createUnit("unit", 30);
 		assertEquals("unit", unit.getName());
 	}
 	
 	@Test
 	public void toStringTest () {
-		Unit unit1 = createUnit("unit", 20);
-		Unit unit2 = createUnit("unit", 30);
+		Unit unit1 = this.createUnit("unit", 20);
+		Unit unit2 = this.createUnit("unit", 30);
 		assertEquals("unit : 20 HP", unit1.toString());
 		unit1.attack(unit2);
 	}

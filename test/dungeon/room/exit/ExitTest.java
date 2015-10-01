@@ -12,16 +12,16 @@ public class ExitTest {
 	
 	@Test
 	public void isOpenTest () {
-		Exit exit1 = createExit(true);
-		Exit exit2 = createExit(false);
+		Exit exit1 = this.createExit(true);
+		Exit exit2 = this.createExit(false);
 		assertTrue(exit1.isOpen());
 		assertTrue(exit2.isOpen());
 	}
 	
 	@Test
 	public void isHiddenTest () {
-		Exit exit1 = createExit(true);
-		Exit exit2 = createExit(false);
+		Exit exit1 = this.createExit(true);
+		Exit exit2 = this.createExit(false);
 		assertTrue(exit1.isHidden());
 		assertFalse(exit2.isHidden());
 	}
