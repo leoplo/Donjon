@@ -18,10 +18,10 @@ public class MonsterRoomTest {
 		MonsterRoom diablotinRoom = new MonsterRoom(diablotin);
 		
 		String diablotinMessage = diablotinRoom.roomAction(player);
-		assertEquals("A fight begin between diablotin and you.\nThe winner is player", diablotinMessage);
+		assertEquals(" A fight begin between diablotin and you.\nThe winner is player\n", diablotinMessage);
 		assertTrue(diablotin.isDead() && player.isAlive());
 		String godzillaMessage = godzillaRoom.roomAction(player);
-		assertEquals("A fight begin between GODZILLA and you.\nThe winner is GODZILLA", godzillaMessage);
+		assertEquals(" A fight begin between GODZILLA and you.\nThe winner is GODZILLA\n", godzillaMessage);
 		assertTrue(godzilla.isAlive() && player.isDead());
 	}
 }
