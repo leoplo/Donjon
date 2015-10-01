@@ -14,7 +14,7 @@ public abstract class UnitTest {
 	@Test
 	public void attackTest () {
 		Unit unit1 = this.createUnit("unit1", 20);
-		Unit unit2 = this.createUnit("unit2", 30);
+		Unit unit2 = this.createUnit("unit2", 20);
 		unit1.attack(unit2);
 		assertTrue(unit1.isAlive());
 		assertTrue(unit2.isAlive());

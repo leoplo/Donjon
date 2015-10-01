@@ -16,7 +16,7 @@ public class PlayerTest extends UnitTest{
 	@Test
 	public void testHeal() {
 		Player player1 = this.createUnit("player1", 20);
-		Player player2 = this.createUnit("player2", 10);
+		Player player2 = this.createUnit("player2", 20);
 		player1.attack(player2);
 		assertEquals(10, player2.getCurrentHealthPoints());
 		player2.heal(5);
