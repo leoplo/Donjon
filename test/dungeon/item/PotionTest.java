@@ -8,6 +8,10 @@ import dungeon.unit.*;
 
 public class PotionTest extends ItemTest{
 	
+	public Item createItem(String name){
+		return new Potion(name, 1);
+	}
+	
 	@Test
 	public void itemActionTest() {
 		Potion potion = new Potion("potion", 1);

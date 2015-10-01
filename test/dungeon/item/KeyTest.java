@@ -8,14 +8,13 @@ import dungeon.unit.Player;
 
 public class KeyTest extends ItemTest{
 
-	//la méthode createItem ne sert à rien
-	public Key createKey(String name){
-		return createItem(name);
+	public Item createItem(String name){
+		return new Key(name);
 	}
 	
 	@Test
 	public void itemActionTest(){
-		Key key = createKey("key");
+		Key key = (Key) this.createItem("key");
 		Player player = new Player("player", 30);
 		assertFalse(player.hasKey(key));
 		key.itemAction(player);
